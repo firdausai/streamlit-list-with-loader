@@ -15,39 +15,19 @@ function sendValue(value) {
 function onRender(event) {
   // Only run the render code the first time the component is loaded.
   if (!window.rendered) {
-    // You most likely want to get the data passed in like this
-    // const {input1, input2, input3} = event.detail.args
+    const { data } = event.detail.args;
 
-    const { data, onClick } = event.detail.args;
+    const nameElement = document.getElementById("name")
 
-    const rootElement = document.getElementById("root")
+    nameElement.innerText = data.name
 
-    for (let i = 0; i < data.length; i++) {
-      const list = document.createElement('div');
-
-      if (data[i].status === 'loading') {
-        list.innerHTML =
-        `
-          <div class='container'>
-            <p class='name'>${data[i].name}<p/>
-            <div class="loader"></div>
-          </div>
-        `
-      } else if (data[i].status === 'failed') {
-        list.innerHTML =
-        `
-          <div class='container'>
-            <p class='name'>${data[i].name}<p/>
-            <div style='margin: 0.85rem'>❌</div>
-          </div>
-        `
-      }
-
-      rootElement.appendChild(list)
-    }
+    const statusElement = document.getElementById("status")
+    
+    statusElement.innerHTML = data.status === 'loading' ? '<div class="loader"></div>' : '<div style="margin: 0.85rem">❌</div>'
 
     // You'll most likely want to pass some data back to Python like this
     // sendValue({output1: "foo", output2: "bar"})
+
     window.rendered = true
   }
 }
@@ -57,4 +37,4 @@ Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender)
 // Tell Streamlit that the component is ready to receive events
 Streamlit.setComponentReady()
 // Render with the correct height, if this is a fixed-height component
-Streamlit.setFrameHeight(100)
+Streamlit.setFrameHeight(50)

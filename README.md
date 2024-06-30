@@ -15,13 +15,12 @@ import streamlit as st
 
 from streamlit_list_with_loader import streamlit_list_with_loader
 
-value = streamlit_list_with_loader()
+data = [
+    { "name": "file_1.txt", "status": "failed" },
+    { "name": "file_2.txt", "status": "loading" },
+    { "name": "file_3.txt", "status": "loading" },
+]
 
-st.write(value)
-```
-
-## Dev
-
-```sh
-streamlit run streamlit-list-with-loader/src/streamlit_list_with_loader/__init__.py
+for item in data:
+    streamlit_list_with_loader(data=data)
 ```

@@ -16,16 +16,14 @@ _component_func = components.declare_component(
 # Create the python function that will be called
 def streamlit_list_with_loader(
     key: Optional[str] = None,
-    data: list[dict[str, bool]] = [],
-    on_click: WidgetCallback | None = None,
+    data: list[dict[str, bool]] = []
 ):
     """
     Add a descriptive docstring
     """
     component_value = _component_func(
         key=key,
-        data=data,
-        on_click=on_click
+        data=data
     )
 
     return component_value
@@ -38,9 +36,23 @@ def main():
         { "name": "file_1.txt", "status": "loading" },
         { "name": "file_2.txt", "status": "loading" },
         { "name": "file_3.txt", "status": "loading" },
+        { "name": "file_4.txt", "status": "loading" }
     ]
 
-    streamlit_list_with_loader(data=data)
+    st.markdown("""
+        <style>
+            .element-container {
+                height: 50px
+            }
+
+            .element-container:nth-child(2) {
+                display: none
+            }
+        </style>
+        """, unsafe_allow_html=True)
+
+    for idx, item in enumerate(data):
+        streamlit_list_with_loader(key=idx, data=item)
 
 if __name__ == "__main__":
     main()
