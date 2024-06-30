@@ -22,8 +22,14 @@ function onRender(event) {
     nameElement.innerText = data.name
 
     const statusElement = document.getElementById("status")
-    
-    statusElement.innerHTML = data.status === 'loading' ? '<div class="loader"></div>' : '<div style="margin: 0.85rem">❌</div>'
+
+    if (data.status === 'loading') {
+      statusElement.innerHTML = '<div class="loader"></div>'
+    } else if (data.status === 'fail') {
+      statusElement.innerHTML = '<div style="margin: 0.2rem">❌</div>'
+    } else if (data.status === 'idle') {
+      statusElement.innerHTML = '<div></div>'
+    }
 
     // You'll most likely want to pass some data back to Python like this
     // sendValue({output1: "foo", output2: "bar"})

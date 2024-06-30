@@ -16,9 +16,9 @@ import streamlit as st
 from streamlit_list_with_loader import streamlit_list_with_loader
 
 data = [
-    { "name": "file_1.txt", "status": "failed" },
-    { "name": "file_2.txt", "status": "loading" },
-    { "name": "file_3.txt", "status": "loading" },
+    { "name": "file_1.txt", "status": "loading" },
+    { "name": "file_2.txt", "status": "fail" },
+    { "name": "file_3.txt", "status": "idle" }
 ]
 
 for item in data:

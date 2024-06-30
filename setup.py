@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
     name="streamlit-list-with-loader",
-    version="0.1.1",
+    version="0.1.2",
     author="Firdaus A. Indradhirmaya",
     author_email="fai14@pitt.edu",
     description="A streamlist component that allows you to have a liist with loading status",

@@ -34,9 +34,8 @@ def main():
 
     data = [
         { "name": "file_1.txt", "status": "loading" },
-        { "name": "file_2.txt", "status": "loading" },
-        { "name": "file_3.txt", "status": "loading" },
-        { "name": "file_4.txt", "status": "loading" }
+        { "name": "file_2.txt", "status": "fail" },
+        { "name": "file_3.txt", "status": "idle" }
     ]
 
     st.markdown("""
